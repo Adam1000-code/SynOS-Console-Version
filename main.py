@@ -42,7 +42,7 @@ sleep(0.5)
 
 sleep(0.2)
 
-if not os.path.exists(system_path) and not os.path.exists(user_store):
+if not os.path.exists(system_path) or not os.path.exists(user_store):
     print("ERROR: system or user data missing")
     sleep(1)
     print("running installer...")

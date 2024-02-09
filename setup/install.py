@@ -46,6 +46,9 @@ sleep(1.2)
 
 print("Installing...")
 
+if os.path.exists(system_path):
+    os.system("rm -r SynOS")
+
 os.mkdir(system_path)
 os.mkdir(user_data_path)
 os.mkdir(home_path)
