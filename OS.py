@@ -58,7 +58,7 @@ password_attempts = 0
 
 access = False
 
-#remember: greater than is >, less than is <
+#remember: greater symbol than is >, less than symbol is <
 
 while password_attempts < 3 and access == False:
     enterPassword = input("Password for " + u_n + ": ")
