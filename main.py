@@ -2,7 +2,7 @@ import os
 import sys
 import time
 from time import sleep
-from cryptography.fernet import Fernet
+#from cryptography.fernet import Fernet
 from random import randint
 
 #this main file acts as a boot up sequence

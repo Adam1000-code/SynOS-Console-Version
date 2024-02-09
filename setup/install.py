@@ -2,7 +2,7 @@ import os
 import sys
 import time
 from time import sleep
-from cryptography.fernet import Fernet
+#from cryptography.fernet import Fernet
 from random import randint
 
 system_path = "SynOS"
@@ -11,11 +11,11 @@ user_data = "username.txt"
 
 password_data = "password.txt"
 
-key = Fernet.generate_key()
+#key = Fernet.generate_key()
 
 user_data_path = os.path.join(system_path, "users_data")
 
-user_keys_path = os.path.join(user_data_path, "userkeys.key")
+#user_keys_path = os.path.join(user_data_path, "userkeys.key")
 
 home_path = os.path.join(system_path, "home")
 
@@ -50,8 +50,8 @@ os.mkdir(system_path)
 os.mkdir(user_data_path)
 os.mkdir(home_path)
 
-with open(user_keys_path, "wb") as userkeys:
-    userkeys.write(key)
+"""with open(user_keys_path, "wb") as userkeys:
+    userkeys.write(key)"""
 
 f = open(user_store, "w")
 f.write(user)

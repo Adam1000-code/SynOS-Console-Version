@@ -2,7 +2,7 @@ import os
 import sys
 import time
 from time import sleep
-from cryptography.fernet import Fernet
+#from cryptography.fernet import Fernet
 from random import randint
 
 system_path = "SynOS"
@@ -37,7 +37,13 @@ def clear_screen():
 
 clear_screen()
 
-print("░██████╗██╗░░░██╗███╗░░██╗░█████╗░░██████╗\n██╔════╝╚██╗░██╔╝████╗░██║██╔══██╗██╔════╝\n╚█████╗░░╚████╔╝░██╔██╗██║██║░░██║╚█████╗░\n░╚═══██╗░░╚██╔╝░░██║╚████║██║░░██║░╚═══██╗\n██████╔╝░░░██║░░░██║░╚███║╚█████╔╝██████╔╝\n╚═════╝░░░░╚═╝░░░╚═╝░░╚══╝░╚════╝░╚═════╝░")
+print("""░██████╗██╗░░░██╗███╗░░██╗░█████╗░░██████╗
+██╔════╝╚██╗░██╔╝████╗░██║██╔══██╗██╔════╝
+╚█████╗░░╚████╔╝░██╔██╗██║██║░░██║╚█████╗░
+░╚═══██╗░░╚██╔╝░░██║╚████║██║░░██║░╚═══██╗
+██████╔╝░░░██║░░░██║░╚███║╚█████╔╝██████╔╝
+╚═════╝░░░░╚═╝░░░╚═╝░░╚══╝░╚════╝░╚═════╝░""")
+
 print("Welcome to the SynOS Console. Please log in:")
 
 sleep(1)
@@ -48,12 +54,27 @@ u_n = username.read()
 password = open(password_store, "r")
 u_p = password.read()
 
-enterPassword = input("Password for " + u_n + ": ")
+password_attempts = 0
 
-if enterPassword == u_p:
-    print("Welcome back, " + u_n)
-else:
-    print("Error: Incorrect password")
+access = False
+
+#remember: greater than is >, less than is <
+
+while password_attempts < 3 and access == False:
+    enterPassword = input("Password for " + u_n + ": ")
+
+    if enterPassword == u_p:
+        print("Welcome back, " + u_n)
+        access = True
+    else:
+        print("Error: Incorrect password")
+        password_attempts += 1
+    
+    if password_attempts == 3:
+        #print("Error: Incorrect password")
+        print("Max attempts reached. Shutting down...")
+        sleep(0.7)
+        exit()
 
 #print(os.getcwd())
 
@@ -67,4 +88,3 @@ while True:
     elif command == "ver":
         print("░██████╗██╗░░░██╗███╗░░██╗░█████╗░░██████╗\n██╔════╝╚██╗░██╔╝████╗░██║██╔══██╗██╔════╝\n╚█████╗░░╚████╔╝░██╔██╗██║██║░░██║╚█████╗░\n░╚═══██╗░░╚██╔╝░░██║╚████║██║░░██║░╚═══██╗\n██████╔╝░░░██║░░░██║░╚███║╚█████╔╝██████╔╝\n╚═════╝░░░░╚═╝░░░╚═╝░░╚══╝░╚════╝░╚═════╝░")
         print("SynOS Console Beta 0.8. Created by Adam1000")
-    
