@@ -32,14 +32,15 @@ def clear_screen():
 clear_screen()
 
 print("░██████╗██╗░░░██╗███╗░░██╗░█████╗░░██████╗\n██╔════╝╚██╗░██╔╝████╗░██║██╔══██╗██╔════╝\n╚█████╗░░╚████╔╝░██╔██╗██║██║░░██║╚█████╗░\n░╚═══██╗░░╚██╔╝░░██║╚████║██║░░██║░╚═══██╗\n██████╔╝░░░██║░░░██║░╚███║╚█████╔╝██████╔╝\n╚═════╝░░░░╚═╝░░░╚═╝░░╚══╝░╚════╝░╚═════╝░")
-sleep(0.7)
-print("Booting...")
+sleep(0.5)
+#print("Booting...")
 
-for i in range(total_iterations + 1):
+"""for i in range(total_iterations + 1):
     sleep(0.02)
     progress_bar(i, total_iterations, prefix="Progress", suffix="Complete", length=50)
+"""
 
-sleep(0.7)
+sleep(0.2)
 
 if not os.path.exists(system_path) and not os.path.exists(user_store):
     print("ERROR: system or user data missing")
