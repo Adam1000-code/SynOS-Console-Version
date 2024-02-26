@@ -13,7 +13,7 @@ password_data = "password.txt"
 
 user_data_path = os.path.join(system_path, "users_data")
 
-user_keys_path = os.path.join(user_data_path, "userkeys.key")
+#user_keys_path = os.path.join(user_data_path, "userkeys.key")
 
 home_path = os.path.join(system_path, "home")
 
