@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+import requests
 from time import sleep
 #from cryptography.fernet import Fernet
 from random import randint
@@ -19,6 +20,8 @@ user_data_path = os.path.join(system_path, "users_data")
 
 home_path = os.path.join(system_path, "home")
 
+apps_path = os.path.join(home_path, "applications")
+
 user_store = os.path.join(user_data_path, user_data)
 
 password_store = os.path.join(user_data_path, password_data)
@@ -33,6 +36,20 @@ def progress_bar(iteration, total, prefix="", suffix="", length=50, print_end="\
     sys.stdout.flush()
     if iteration == total:
         print(print_end)
+
+def download_file_from_pastebin(pastebin_url, save_directory):
+    try:
+        response = requests.get(pastebin_url)
+        if response.status_code == 200:
+            file_name = pastebin_url.split('/')[-1]
+            file_path = os.path.join(save_directory, file_name)
+            with open(file_path, 'wb') as file:
+                file.write(response.content)
+            print(f"File downloaded successfully to {file_path}")
+        else:
+            print("Failed to download the file. Invalid URL or server error.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 def clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
@@ -52,6 +69,7 @@ if os.path.exists(system_path):
 os.mkdir(system_path)
 os.mkdir(user_data_path)
 os.mkdir(home_path)
+os.mkdir(apps_path)
 
 """with open(user_keys_path, "wb") as userkeys:
     userkeys.write(key)"""
